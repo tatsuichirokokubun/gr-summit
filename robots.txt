@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gr-summit.legendaryworks.co.jp/sitemap.xml

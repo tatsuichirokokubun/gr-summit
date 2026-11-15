@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GR SUMMIT DASH｜GR SUMMIT 2027 ミニレースゲーム</title>
+<meta name="description" content="GR SUMMIT 2027の公式ミニゲーム「GR SUMMIT DASH」。富士へ向かうコースを2周、車とコーンをかわしてGRトークンを集め、ベストタイムを狙おう。PC・スマホ対応。GR SUMMIT 2027は2027年3月14日(日)富士スピードウェイ P7で開催。">
+<link rel="canonical" href="https://gr-summit.legendaryworks.co.jp/game/">
+<meta name="theme-color" content="#0a0a0b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GR SUMMIT 2027">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="GR SUMMIT DASH｜GR SUMMIT 2027 ミニレースゲーム">
+<meta property="og:description" content="車とコーンをかわしてGRトークンを集め、ベストタイムを狙おう。GR SUMMIT 2027は2027年3月14日(日)富士スピードウェイ P7で開催。">
+<meta property="og:url" content="https://gr-summit.legendaryworks.co.jp/game/">
+<meta property="og:image" content="https://gr-summit.legendaryworks.co.jp/img/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@GR_SUMMIT_JAPAN">
+<meta name="twitter:image" content="https://gr-summit.legendaryworks.co.jp/img/ogp.jpg">
+<link rel="icon" href="../img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="game.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "GR SUMMIT 2027", "item": "https://gr-summit.legendaryworks.co.jp/"},
+    {"@type": "ListItem", "position": 2, "name": "ミニゲーム GR SUMMIT DASH", "item": "https://gr-summit.legendaryworks.co.jp/game/"}
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://gr-summit.legendaryworks.co.jp/game/",
+   "url": "https://gr-summit.legendaryworks.co.jp/game/",
+   "name": "GR SUMMIT DASH｜GR SUMMIT 2027 ミニレースゲーム",
+   "inLanguage": "ja",
+   "isPartOf": {"@id": "https://gr-summit.legendaryworks.co.jp/#website"},
+   "about": {"@id": "https://gr-summit.legendaryworks.co.jp/#event"}
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="../" aria-label="GR SUMMIT 2027 トップへ戻る"><img src="../img/logo-w.png" width="320" height="125" alt="GR SUMMIT ALL JAPAN GR OWNERS MEETING"></a>
+    <a class="btn btn-red" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener"><span class="lbl-long">公式LINEに登録してエントリー開始を待つ</span><span class="lbl-short">公式LINEに登録</span></a>
+  </div>
+</header>
+
+<main class="main">
+  <nav class="crumb" aria-label="パンくずリスト"><ol><li><a href="../">GR SUMMIT 2027</a></li><li aria-current="page">ミニゲーム</li></ol></nav>
+  <h1 class="ttl"><span>MINI GAME</span>GR SUMMIT DASH</h1>
+
+  <div class="game" id="game">
+    <canvas id="cv" aria-label="レースゲーム画面" role="img"></canvas>
+    <div class="hud" aria-hidden="true">
+      <div class="hud-l"><p><i>LAP</i><b id="hLap">1/2</b></p><p><i>TIME</i><b id="hTime">0'00"00</b></p></div>
+      <div class="hud-c"><p class="gr"><i>GR</i><b id="hGr">0</b></p></div>
+      <div class="hud-r"><p><i>km/h</i><b id="hSpd">0</b></p><p><i>BEST</i><b id="hBest">--</b></p></div>
+    </div>
+    <div class="msg" id="msg" aria-hidden="true"></div>
+
+    <section class="ov on" id="ovStart" aria-labelledby="st-ttl">
+      <div class="ov-in">
+        <p class="ov-en">2 LAPS TIME ATTACK</p>
+        <h2 id="st-ttl">富士まで、全開で。</h2>
+        <ul class="how">
+          <li><b>操作</b><span class="pc">← → でハンドル／↑ か Space でアクセル／↓ でブレーキ</span><span class="sp">画面下のボタンで ハンドル・アクセル・ブレーキ</span></li>
+          <li><b>GRトークン</b>1枚につきタイム −0.3秒</li>
+          <li><b>車とコーン</b>ぶつかると大きく減速。コース外も減速します</li>
+        </ul>
+        <button class="btn btn-red btn-lg" type="button" id="btnStart">START</button>
+        <p class="ov-best" id="stBest"></p>
+      </div>
+    </section>
+
+    <section class="ov" id="ovEnd" aria-labelledby="end-ttl" aria-live="polite">
+      <div class="ov-in">
+        <p class="ov-en">FINISH</p>
+        <h2 id="end-ttl">ゴール！</h2>
+        <dl class="res">
+          <div><dt>走行タイム</dt><dd id="rRun">--</dd></div>
+          <div><dt>GRトークン</dt><dd id="rGr">--</dd></div>
+          <div class="tot"><dt>リザルト</dt><dd id="rTot">--</dd></div>
+        </dl>
+        <p class="newbest" id="rNew" hidden>NEW BEST!</p>
+        <p class="ov-best" id="rBest"></p>
+        <p class="ov-cta-lead">本物のGRで、富士に集まろう。<br>参加車両エントリーは2026年12月15日(火)スタート。</p>
+        <div class="ov-btns">
+          <a class="btn btn-red btn-lg" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener">公式LINEに登録してエントリー開始を待つ</a>
+          <button class="btn btn-line" type="button" id="btnRetry">もう一度走る</button>
+          <a class="btn btn-line" href="../">GR SUMMIT 2027 トップへ</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="pad" id="pad" aria-label="タッチ操作ボタン">
+    <div class="pad-l">
+      <button type="button" class="pb" data-k="left" aria-label="左へ">◀</button>
+      <button type="button" class="pb" data-k="right" aria-label="右へ">▶</button>
+    </div>
+    <div class="pad-r">
+      <button type="button" class="pb brake" data-k="down" aria-label="ブレーキ">BRAKE</button>
+      <button type="button" class="pb accel" data-k="up" aria-label="アクセル">ACCEL</button>
+    </div>
+  </div>
+
+  <section class="info">
+    <h2>GR SUMMIT 2027 開催情報</h2>
+    <p>2027年3月14日(日)、富士スピードウェイ P7で開催。参加車両エントリーは2026年12月15日(火)から公式LINEで受付開始。詳細はエントリー開始時に公式LINEでお知らせします。</p>
+    <div class="info-btns">
+      <a class="btn btn-red" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener">公式LINEに登録してエントリー開始を待つ</a>
+      <a class="btn btn-line" href="../">開催概要を見る</a>
+    </div>
+    <p class="disc">※このゲームはGR SUMMIT 2027のオリジナルミニゲームです。登場する車両・コースは架空のものです。</p>
+  </section>
+</main>
+
+<footer><div class="foot-in"><a href="../">GR SUMMIT 2027</a><span>主催・運営：株式会社LEGENDARY WORKS ／ GR SUMMIT運営事務局</span><span>© 2026 Legendary Works, Inc.</span></div></footer>
+<script src="game.js"></script>
+</body>
+</html>
