@@ -336,4 +336,34 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{rootMargin:'0px 0px -8% 0px',threshold:.08});
   els.forEach((el,i)=>{ const r=el.getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0) return; el.classList.add('rv'); el.style.transitionDelay=((i%4)*.06)+'s'; io.observe(el); });
 })();
+
+/* ---------- 写真帯：ランダムな写真をクロスフェード（画面内にあるときだけ） ---------- */
+(function(){
+  const INTERVAL=5500;
+  document.querySelectorAll('.band[data-pool]').forEach(band=>{
+    const holder=band.querySelector('.band-img'); if(!holder) return;
+    const pool=shuffle(band.dataset.pool.split(',').map(x=>x.trim()).filter(Boolean)).map(id=>`img/gal/${id}.webp`);
+    if(!pool.length) return;
+    const layers=[0,1].map(()=>{ const d=document.createElement('div'); d.className='band-ph'; holder.appendChild(d); return d; });
+    let idx=0, front=0, timer=null, visible=false, busy=false;
+    layers[0].style.backgroundImage=`url("${pool[0]}")`; layers[0].classList.add('on');
+    if(REDUCE||pool.length<2) return;
+    function next(){
+      if(busy) return; busy=true;
+      const ni=(idx+1)%pool.length, back=1-front, im=new Image();
+      im.decoding='async';
+      im.onload=im.onerror=()=>{
+        layers[back].style.backgroundImage=`url("${pool[ni]}")`;
+        requestAnimationFrame(()=>{ layers[back].classList.add('on'); layers[front].classList.remove('on'); front=back; idx=ni; busy=false; });
+      };
+      im.src=pool[ni];
+    }
+    function run(){ if(!timer&&visible) timer=setInterval(next,INTERVAL); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(es=>{ visible=es.some(e=>e.isIntersecting); visible?run():stop(); },{threshold:.05}).observe(band);
+    } else { visible=true; run(); }
+    document.addEventListener('visibilitychange',()=>{ document.hidden?stop():run(); });
+  });
+})();
 })();

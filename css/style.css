@@ -513,3 +513,17 @@ body{line-break:strict;word-break:auto-phrase}
 }
 .lbl2 .ib,.lbl-long .ib{white-space:nowrap}
 .lbl2{text-align:center}
+
+/* 2026-11-15 調整：数字のバランス・写真帯のクロスフェード・赤線削除 */
+.stat:not(.big) .stat-v{font-size:clamp(20px,2.2vw,28px)!important}
+.stat:not(.big) .stat-v .n{font-size:2.5em}
+.stat:not(.big) .stat-v.sub .n{font-size:1.65em}
+.stat.big .stat-v .n{font-size:3.9em}
+.stat.big .stat-v.sub .n{font-size:2.65em}
+.stats-note .ib:nth-child(3){color:inherit}
+.stats-note .sn2{font-size:1.18em}
+.stats-note em{font-style:normal;color:var(--red)}
+.band-ph{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
+.band-ph.on{opacity:1}
+.game-bnr{border-bottom:0}
+@media (prefers-reduced-motion:reduce){.band-ph{transition:none}}
