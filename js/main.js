@@ -117,7 +117,7 @@ function updateEntry(){
   if(ms<=0){
     $('cd').style.display='none';
     $('open-ttl').textContent='参加車両エントリー受付中';
-    $('openState').textContent='エントリーのご案内は公式LINEでお届けしています。';
+    $('openState').textContent='エントリーのご案内は公式LINEでお届けしています｡';
     return false;
   }
   const d=Math.floor(ms/864e5), h=Math.floor(ms%864e5/36e5), m=Math.floor(ms%36e5/6e4), s=Math.floor(ms%6e4/1e3);
