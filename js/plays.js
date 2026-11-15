@@ -1,7 +1,7 @@
 /* GR SUMMIT DASH 累計プレイ数（LPとゲームページで共通） */
 (function(){
 'use strict';
-const PLAY_OFFSET = 2000;   // 表示に上乗せする数（変更はここだけ。LP・ゲームの両方に反映）
+const PLAY_OFFSET = 36;   // 表示に上乗せする数（変更はここだけ。LP・ゲームの両方に反映）
 const API = 'https://abacus.jasoncameron.dev', NS = 'gr-summit-lw', KEY = 'plays';
 const TIMEOUT = 3000;       // 3秒で打ち切り（失敗しても画面は壊さない）
 const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
