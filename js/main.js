@@ -248,7 +248,7 @@ layoutFly(); renderScene(); updateProgress();
 
 /* ---------- 公式LINE登録者数（data/stats.json。取れないときは下の値） ---------- */
 (function(){
-  const FALLBACK={line_friends:1043, updated:'2026-11-15'};
+  const FALLBACK={line_friends:1056, updated:'2026-11-15'};
   const nums=[...document.querySelectorAll('[data-line-count]')], dates=[...document.querySelectorAll('[data-line-updated]')], mils=[...document.querySelectorAll('[data-line-milestone]')];
   if(!nums.length) return;
   const fmt=n=>Math.round(n).toLocaleString('ja-JP');
