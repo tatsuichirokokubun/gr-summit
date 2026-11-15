@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261115f">
+<link rel="stylesheet" href="css/style.css?v=20261115g">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -283,7 +283,7 @@
       <span class="brand-sub"><b>2027.03.14 SUN</b>　富士スピードウェイ P7</span>
     </a>
     <nav class="hdr-cta" aria-label="公式LINEとミニゲーム">
-      <a class="btn btn-red" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener"><span class="lbl-long">公式LINEに登録してエントリー開始を待つ</span><span class="lbl-short">公式LINEに登録</span></a>
+      <a class="btn btn-red" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener"><span class="lbl-long"><span class="ib">公式LINEに登録して</span><wbr><span class="ib">エントリー開始を待つ</span></span><span class="lbl-short">公式LINEに登録</span></a>
       <a class="btn btn-line" href="game/"><span class="lbl-long">ミニゲーム</span><span class="lbl-short">GAME</span></a>
     </nav>
   </div>
@@ -295,6 +295,7 @@
     <div class="side l" id="sideL" aria-hidden="true"></div>
     <div class="side r" id="sideR" aria-hidden="true"></div>
     <div class="shade" id="shade"></div>
+    <p class="hero-word" id="heroWord" aria-hidden="true"><span>GO TO</span><span>GR!!</span></p>
     <div class="poster" id="poster">
       <img id="posterImg" src="img/kv.webp" srcset="img/kv-s.webp 720w, img/kv.webp 1080w" sizes="(max-width:768px) 100vw, 50vh" fetchpriority="high" decoding="async" alt="GR SUMMIT 2027 キービジュアル「富士で再び｡GO TO GR!!」2027.03.14.SUN FUJI SPEEDWAY P7 2026.12.15.TUE ENTRY START" width="1080" height="1350">
     </div>
@@ -307,7 +308,7 @@
   <section class="open" aria-labelledby="open-ttl">
     <div class="wrap open-grid">
       <div class="open-date" id="openDate">12.15<small>TUE</small></div>
-      <div class="open-txt"><h2 id="open-ttl">参加車両エントリー受付スタート</h2><span id="openState">エントリーのご案内は公式LINEから｡今のうちに友だち追加して､受付開始を待とう｡</span></div>
+      <div class="open-txt"><h2 id="open-ttl">参加車両エントリー受付スタート</h2><span id="openState"><span class="ib">エントリーのご案内は公式LINEから｡</span><span class="ib">今のうちに友だち追加して､</span><span class="ib">受付開始を待とう｡</span></span></div>
       <div class="cd" id="cd" role="timer" aria-label="エントリー開始までのカウントダウン">
         <div><b id="cdD">--</b><i>日</i></div><div><b id="cdH">--</b><i>時間</i></div><div><b id="cdM">--</b><i>分</i></div><div><b id="cdS">--</b><i>秒</i></div>
       </div>
@@ -319,25 +320,27 @@
     <div class="wrap lp-in">
       <div class="lp-num">
         <h2 class="lp-ttl" id="lp-ttl">公式LINE登録者</h2>
-        <p class="lp-count"><b data-line-milestone>1,000</b><span>人</span><em>突破！</em></p>
+        <p class="lp-count"><b data-line-milestone>1,000</b><span>人</span><em>突破!</em></p>
         <p class="lp-now">現在 <b data-line-count>1,043</b>人</p>
         <p class="lp-date"><span data-line-updated>2026年11月15日</span>時点</p>
       </div>
       <div class="lp-cta">
         <p>あなたも登録して<br>エントリー開始を待とう</p>
-        <a class="btn btn-red btn-lg" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener">公式LINEに友だち登録する</a>
+        <a class="btn btn-red btn-lg btn-2l" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener">公式LINEに登録して<br>エントリー開始を待つ</a>
       </div>
     </div>
   </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>GR SUMMIT 2027</span><span>2027.03.14 SUN</span><span>FUJI SPEEDWAY P7</span><span>ENTRY START 2026.12.15 TUE</span><span>GO TO GR!!</span><span>GR SUMMIT 2027</span><span>2027.03.14 SUN</span><span>FUJI SPEEDWAY P7</span><span>ENTRY START 2026.12.15 TUE</span><span>GO TO GR!!</span></div></div>
 
   <!-- statement -->
   <section class="sec state bg-state" aria-labelledby="h1">
     <div class="wrap">
       <p class="h2-en">ALL JAPAN GR OWNERS MEETING</p>
       <h1 class="state-big" id="h1"><span class="h1-sub">GR SUMMIT 2027</span>富士で再び｡</h1>
-      <p class="state-lead">全国のGRが､富士に再集結｡</p>
-      <p>"見るだけ"じゃない､"集う"イベント｡<br>今年は企画も盛りだくさん｡</p>
-      <p>イベント初参加・ソロ参加・見学も大歓迎です｡</p>
+      <p class="state-lead"><span class="ib">全国のGRが､</span><span class="ib">富士に再集結｡</span></p>
+      <p><span class="ib">"見るだけ"じゃない､</span><span class="ib">"集う"イベント｡</span><br><span class="ib">今年は企画も</span><span class="ib">盛りだくさん｡</span></p>
+      <p><span class="ib">イベント初参加・</span><span class="ib">ソロ参加・</span><span class="ib">見学も大歓迎です｡</span></p>
 
       <div class="stats">
         <div class="stat">
@@ -352,9 +355,11 @@
           <p class="stat-v sub"><span class="n" data-to="2000">2,000</span><small>人規模</small></p>
         </div>
       </div>
-      <p class="note">2026年5月30日(土)､富士スピードウェイで初開催｡2027年はさらに大きなスケールで開催します｡</p>
+      <p class="stats-note"><span class="ib">2026年5月30日(土)､</span><span class="ib">富士スピードウェイで</span><span class="ib">初開催｡</span><br><span class="ib">2027年は</span><span class="ib">さらに大きなスケールで</span><span class="ib">開催します｡</span></p>
     </div>
   </section>
+
+  <div class="band" aria-hidden="true"><div class="band-img" style="background-image:url('img/gal/G034.webp')"></div><div class="band-txt"><p class="band-big">FUJI SPEEDWAY</p><p class="band-small">2027.03.14 SUN ／ P7</p></div></div>
 
   <!-- outline -->
   <section class="sec bg-outline" id="outline" aria-labelledby="outline-ttl">
@@ -382,7 +387,7 @@
     <div class="wrap">
       <p class="h2-en">ELIGIBLE CARS</p>
       <h2 class="h2" id="cars-ttl">参加できる車両</h2>
-      <p class="lead-txt">GRの名を持つクルマなら､ノーマル・カスタム問わず参加OK｡GRパーツやエアロを装着した「GR仕様車」も歓迎します｡</p>
+      <p class="lead-txt"><span class="ib">GRの名を持つクルマなら､</span><span class="ib">ノーマル・カスタム問わず</span><span class="ib">参加OK｡</span><br><span class="ib">GRパーツやエアロを装着した</span><span class="ib">「GR仕様車」も</span><span class="ib">歓迎します｡</span></p>
       <div class="cars">
         <article class="car-card main">
           <p class="car-tag">GR</p>
@@ -414,12 +419,14 @@
     </div>
   </section>
 
+  <div class="band" aria-hidden="true"><div class="band-img" style="background-image:url('img/gal/G404.webp')"></div><div class="band-txt"><p class="band-big">GO TO GR!!</p><p class="band-small">ALL JAPAN GR OWNERS MEETING</p></div></div>
+
   <!-- entry -->
   <section class="sec bg-entry" id="entry" aria-labelledby="entry-ttl">
     <div class="wrap">
       <p class="h2-en">ENTRY</p>
-      <h2 class="h2" id="entry-ttl">エントリー・出展・見学</h2>
-      <p class="lead-txt">参加車両のエントリーは2026年12月15日(火)スタート｡受付のご案内は公式LINEでお届けします｡</p>
+      <h2 class="h2" id="entry-ttl"><span class="ib">エントリー・</span><span class="ib">出展・見学</span></h2>
+      <p class="lead-txt"><span class="ib">参加車両のエントリーは</span><span class="ib">2026年12月15日(火)スタート｡</span><br><span class="ib">受付のご案内は</span><span class="ib">公式LINEでお届けします｡</span></p>
       <div class="flow">
         <article class="flow-card">
           <h3>参加車両エントリー</h3>
@@ -429,8 +436,8 @@
             <li>12月15日(火)､エントリー開始のお知らせが届く</li>
             <li>LINEの案内に沿ってエントリー</li>
           </ol>
-          <p class="lp-mini">公式LINE登録者 <b data-line-milestone>1,000</b>人突破！<small>（現在 <span data-line-count>1,043</span>人・<span data-line-updated>2026年11月15日</span>時点）</small></p>
-          <a class="btn btn-red" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener">公式LINEに登録してエントリー開始を待つ</a>
+          <p class="lp-mini">公式LINE登録者 <b data-line-milestone>1,000</b>人突破!<small>（現在 <span data-line-count>1,043</span>人・<span data-line-updated>2026年11月15日</span>時点）</small></p>
+          <a class="btn btn-red" href="https://lin.ee/5E6uD97" target="_blank" rel="noopener"><span class="lbl2"><span class="ib">公式LINEに登録して</span><wbr><span class="ib">エントリー開始を待つ</span></span></a>
         </article>
         <article class="flow-card vendor">
           <h3>ブース出展募集中</h3>
@@ -460,7 +467,7 @@
       <div class="wrap">
         <p class="h2-en">GR SUMMIT 2026</p>
         <h2 class="h2" id="gal-ttl">去年の会場の雰囲気</h2>
-        <p class="lead-txt">2026年5月30日(土)､富士スピードウェイに集まった約200台のGR｡写真をタップすると拡大できます｡</p>
+        <p class="lead-txt"><span class="ib">2026年5月30日(土)､</span><span class="ib">富士スピードウェイに</span><span class="ib">集まった</span><span class="ib">約200台のGR｡</span><br><span class="ib">写真をタップすると</span><span class="ib">拡大できます｡</span></p>
       </div>
     </div>
     <div class="scene" id="scene">
@@ -485,11 +492,13 @@
         <p class="h2-en">MINI GAME</p>
         <h2 class="h2" id="game-ttl">GR SUMMIT DASH</h2>
         <p>富士へ向かう道を駆け抜けるミニレースゲーム｡車とコーンをかわして「GR」トークンを集め､ベストスコアを狙おう｡スマホでも遊べます｡</p>
-        <p class="plays" id="lpPlays" hidden>現在 <b id="lpPlaysN">0</b> 人の方に遊んでいただきました！</p>
+        <p class="plays" id="lpPlays" hidden>現在 <b id="lpPlaysN">0</b> 人の方に遊んでいただきました!</p>
       </div>
       <a class="btn btn-red btn-lg game-go" href="game/">ミニゲームで遊ぶ</a>
     </div>
   </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-in"><span>GR SUMMIT 2027</span><span>2027.03.14 SUN</span><span>FUJI SPEEDWAY P7</span><span>ENTRY START 2026.12.15 TUE</span><span>GO TO GR!!</span><span>GR SUMMIT 2027</span><span>2027.03.14 SUN</span><span>FUJI SPEEDWAY P7</span><span>ENTRY START 2026.12.15 TUE</span><span>GO TO GR!!</span></div></div>
 
   <!-- FAQ -->
   <section class="sec bg-faq" id="faq" aria-labelledby="faq-ttl">
@@ -649,8 +658,8 @@
   <figure class="lb-fig" id="lbFig"><img id="lbImg" alt=""><button class="lb-x" id="lbX" type="button" aria-label="閉じる">×</button></figure>
 </div>
 
-<script src="js/plays.js?v=20261115f"></script>
-<script src="js/photos.js?v=20261115f"></script>
-<script src="js/main.js?v=20261115f"></script>
+<script src="js/plays.js?v=20261115g"></script>
+<script src="js/photos.js?v=20261115g"></script>
+<script src="js/main.js?v=20261115g"></script>
 </body>
 </html>

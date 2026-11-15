@@ -430,3 +430,86 @@ footer b{color:var(--white);display:block;margin-bottom:4px;font-weight:700}
   .line-proof{padding:52px 0}
 }
 .state .h2-en,.gal-head .h2-en{justify-content:center}
+
+/* =========================================================
+   2026-11-15 夜：イベントLPとしての迫力（太い文字・写真帯・赤・スクロール演出）
+   ========================================================= */
+.ib{display:inline-block}
+body{line-break:strict;word-break:auto-phrase}
+.h2{font-size:clamp(34px,5.2vw,72px);line-height:1.12}
+.btn-2l{line-height:1.45;text-align:center}
+
+/* hero: huge outline type behind the poster */
+.hero-word{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;margin:0;pointer-events:none;font-weight:800;line-height:.86;letter-spacing:-.02em;font-size:clamp(90px,17vw,300px);color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.55);opacity:0;transform:scale(1.25);will-change:transform,opacity;white-space:nowrap}
+.hero-word span:last-child{-webkit-text-stroke-color:rgba(235,10,30,.9)}
+.shade{background:linear-gradient(180deg,rgba(0,0,0,.55),#000 85%)}
+
+/* entry banner: stronger red */
+.open{background:var(--red);border-top:0}
+.open-date small{color:#000}
+.open-txt span{color:rgba(255,255,255,.92)}
+.cd{border-color:rgba(255,255,255,.4);background:#000}
+.cd div{border-color:rgba(255,255,255,.18)}
+
+/* ticker (red band) */
+.ticker{background:var(--red);color:#fff;overflow:hidden;border-top:1px solid #000;border-bottom:1px solid #000}
+.ticker-in{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker span{font-weight:800;font-size:clamp(20px,2.6vw,34px);letter-spacing:.04em;padding:14px 0;white-space:nowrap;display:flex;align-items:center}
+.ticker span::after{content:"";width:10px;height:10px;background:#000;margin:0 clamp(22px,3vw,44px);transform:rotate(45deg)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* full-bleed photo band with parallax */
+.band{position:relative;height:clamp(300px,62vh,640px);overflow:hidden;background:#000}
+.band-img{position:absolute;left:0;right:0;top:-18%;height:136%;background-size:cover;background-position:center;will-change:transform}
+.band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.25) 55%,rgba(0,0,0,0) 100%)}
+.band-txt{position:absolute;left:0;right:0;bottom:0;z-index:1;width:var(--wrap);max-width:var(--content-max);margin:0 auto;padding-bottom:clamp(28px,5vw,64px)}
+.band-big{font-weight:800;font-size:clamp(46px,9vw,140px);line-height:.92;color:#fff;letter-spacing:-.01em}
+.band-small{display:inline-block;margin-top:14px;background:var(--red);color:#fff;font-weight:800;letter-spacing:.14em;font-size:clamp(12px,1.2vw,15px);padding:6px 14px}
+
+/* statement tweaks */
+.state .h2-en::before{display:none}
+.h1-sub{color:var(--red)}
+.state-lead{font-size:clamp(24px,3.2vw,42px)!important}
+.stat-v .n{font-size:2.2em}
+.stat.big .stat-v .n{font-size:3.4em;color:var(--red)}
+.stat.big .stat-v.sub .n{font-size:2.3em}
+.stat.big .stat-v{font-size:clamp(22px,2.4vw,30px)!important}
+.stat:not(.big) .stat-v{font-size:clamp(17px,1.8vw,22px)!important}
+.stat:not(.big) .stat-v.sub .n{font-size:1.3em}
+.stat.big .n.pop{animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.14)}100%{transform:scale(1)}}
+.stats-note{margin-top:72px!important;font-weight:800;font-size:clamp(20px,2.6vw,34px)!important;line-height:1.5;color:#111!important}
+.stats-note .ib:nth-child(3){color:var(--red)}
+
+/* P7 chips: solid red */
+.p7 li{background:var(--red);border-color:var(--red);color:#fff;font-weight:700}
+
+/* scroll reveal (added by JS only) */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* header buttons: alternate light sweep */
+.hdr-cta .btn{position:relative;overflow:hidden;isolation:isolate}
+.hdr-cta .btn::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(0) skewX(-20deg);animation:sweep 6s ease-in-out infinite;pointer-events:none;z-index:1}
+.hdr-cta .btn+.btn::before{animation-delay:3s}
+.hdr-cta .btn-red{animation:glowR 6s ease-in-out infinite}
+.hdr-cta .btn-line{animation:glowW 6s ease-in-out 3s infinite}
+@keyframes sweep{0%{transform:translateX(0) skewX(-20deg)}18%,100%{transform:translateX(420%) skewX(-20deg)}}
+@keyframes glowR{0%,100%{box-shadow:0 0 0 rgba(235,10,30,0)}9%{box-shadow:0 0 22px rgba(235,10,30,.75)}20%{box-shadow:0 0 0 rgba(235,10,30,0)}}
+@keyframes glowW{0%,100%{box-shadow:0 0 0 rgba(255,255,255,0)}9%{box-shadow:0 0 20px rgba(255,255,255,.55)}20%{box-shadow:0 0 0 rgba(255,255,255,0)}}
+
+@media (max-width:768px){
+  .hero-word{font-size:clamp(70px,24vw,130px)}
+  .band{height:46vh;min-height:260px}
+  .band::after{background:linear-gradient(0deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.2) 60%,rgba(0,0,0,0) 100%)}
+  .stats-note{margin-top:52px!important}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker-in{animation:none}
+  .hdr-cta .btn,.hdr-cta .btn::before{animation:none}
+  .hdr-cta .btn::before{display:none}
+  .rv{opacity:1;transform:none;transition:none}
+  .stat.big .n.pop{animation:none}
+}
+.lbl2 .ib,.lbl-long .ib{white-space:nowrap}
+.lbl2{text-align:center}

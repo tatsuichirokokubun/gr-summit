@@ -51,6 +51,7 @@ const intro=document.querySelector('.intro'), poster=document.getElementById('po
       shade=document.getElementById('shade'), cue=document.getElementById('cue');
 const stageEl=intro.querySelector('.stage');
 let cur=-1;
+const heroWord=document.getElementById('heroWord');
 function introEnd(){
   const top=parseFloat(getComputedStyle(stageEl).top)||0;
   return intro.offsetTop + intro.offsetHeight - stageEl.offsetHeight - top;
@@ -72,6 +73,7 @@ function render(){
     cur=idx;
   }
   cue.style.opacity=(p<0.05||p>=0.98)?.9:0;
+  if(heroWord){ const q=Math.max(0,Math.min(1,(p-.04)/.6)); heroWord.style.opacity=(q*.95).toFixed(3); heroWord.style.transform=`scale(${(1.25-.25*easeOut(q)).toFixed(4)})`; }
 }
 /* ---------- ヘッダー下のスクロール進捗バー ---------- */
 const hdr=document.querySelector('.hdr');
@@ -81,7 +83,15 @@ function updateProgress(){
   hdr.style.setProperty('--sp',p.toFixed(4));
 }
 let ticking=false;
-window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{render();renderScene();updateProgress();ticking=false});ticking=true}},{passive:true});
+/* ---------- 写真帯のパララックス ---------- */
+const bands=[...document.querySelectorAll('.band-img')];
+function parallax(){
+  if(REDUCE) return;
+  const vh=window.innerHeight;
+  bands.forEach(b=>{ const r=b.parentNode.getBoundingClientRect(); if(r.bottom<0||r.top>vh) return;
+    const d=(r.top+r.height/2-vh/2)/vh; b.style.transform=`translate3d(0,${(d*-14).toFixed(2)}%,0)`; });
+}
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{render();renderScene();updateProgress();parallax();ticking=false});ticking=true}},{passive:true});
 window.addEventListener('resize',()=>{render();layoutFly();renderScene();updateProgress();});
 window.addEventListener('load',updateProgress);
 
@@ -141,7 +151,7 @@ if(updateEntry()){ const t=setInterval(()=>{ if(!updateEntry()) clearInterval(t)
     (function f(now){
       const t=Math.min(1,(now-t0)/dur), k=1-Math.pow(1-t,4);
       els.forEach(el=>el.textContent=fmt(Math.round(+el.dataset.to*k)));
-      if(t<1)requestAnimationFrame(f);
+      if(t<1)requestAnimationFrame(f); else document.querySelectorAll('.stat.big .n').forEach(n=>n.classList.add('pop'));
     })(t0);
   },{threshold:.5});
   io.observe(document.querySelector('.stats'));
@@ -252,7 +262,7 @@ layoutFly(); renderScene(); updateProgress();
     mils.forEach(el=>el.textContent=fmt(milestone(to)));
     nums.forEach(el=>{
       el.textContent=fmt(to);
-      if(REDUCE||!('IntersectionObserver' in window)) return;
+      if(REDUCE||!('IntersectionObserver' in window)||!el.closest('.line-proof')) return;
       el.textContent='0';
       const io=new IntersectionObserver(es=>{
         if(!es.some(e=>e.isIntersecting)) return; io.disconnect();
@@ -317,4 +327,13 @@ window.addEventListener('wheel',lockScroll,{passive:false});
 window.addEventListener('touchmove',lockScroll,{passive:false});
 $('lbBg').addEventListener('click',closeLb);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+
+/* ---------- スクロールで軽く出てくる（動きを減らす設定では無効） ---------- */
+(function(){
+  if(REDUCE||!('IntersectionObserver' in window)) return;
+  const sel='.sec .h2-en,.sec .h2,.sec .lead-txt,.state-big,.state-lead,.stat,.stats-note,.ol-item,.ol-list,.car-card,.flow-card,.faq details,.c-item,.band-txt,.lp-num,.lp-cta,.game-in>*,.tour-ttl,.en-grid>*';
+  const els=[...document.querySelectorAll(sel)].filter(el=>!el.closest('.gal-head'));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach((el,i)=>{ const r=el.getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0) return; el.classList.add('rv'); el.style.transitionDelay=((i%4)*.06)+'s'; io.observe(el); });
+})();
 })();
