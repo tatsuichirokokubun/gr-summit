@@ -236,6 +236,48 @@ layoutFly(); renderScene(); updateProgress();
   add();
 })();
 
+/* ---------- 公式LINE登録者数（data/stats.json。取れないときは下の値） ---------- */
+(function(){
+  const FALLBACK={line_friends:1004, updated:'2026-11-15'};
+  const nums=[...document.querySelectorAll('[data-line-count]')], dates=[...document.querySelectorAll('[data-line-updated]')];
+  if(!nums.length) return;
+  const fmt=n=>Math.round(n).toLocaleString('ja-JP');
+  const fmtDate=d=>{ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||''); return m?`${+m[1]}年${+m[2]}月${+m[3]}日`:''; };
+  function apply(st){
+    const to=(st&&isFinite(+st.line_friends)&&+st.line_friends>0)?+st.line_friends:FALLBACK.line_friends;
+    const dt=fmtDate(st&&st.updated)||fmtDate(FALLBACK.updated);
+    dates.forEach(el=>el.textContent=dt);
+    nums.forEach(el=>{
+      el.textContent=fmt(to);
+      if(REDUCE||!('IntersectionObserver' in window)) return;
+      el.textContent='0';
+      const io=new IntersectionObserver(es=>{
+        if(!es.some(e=>e.isIntersecting)) return; io.disconnect();
+        const t0=performance.now(), dur=1600;
+        (function f(now){ const t=Math.min(1,(now-t0)/dur); el.textContent=fmt(to*(1-Math.pow(1-t,4))); if(t<1) requestAnimationFrame(f); })(t0);
+      },{threshold:.5});
+      io.observe(el);
+    });
+  }
+  let ac=null,timer=null;
+  try{ ac=('AbortController' in window)?new AbortController():null; if(ac) timer=setTimeout(()=>ac.abort(),3000); }catch(e){}
+  fetch('data/stats.json',{cache:'no-store',signal:ac?ac.signal:undefined})
+    .then(r=>r.ok?r.json():null).catch(()=>null)
+    .then(st=>{ if(timer) clearTimeout(timer); apply(st); });
+})();
+
+/* ---------- ミニゲームの累計プレイ数（js/plays.js・表示のみ） ---------- */
+(function(){
+  const P=window.GRPlays, box=$('lpPlays'), n=$('lpPlaysN');
+  if(!P||!box||!n) return;
+  P.get().then(v=>{
+    const total=P.OFFSET+(v||0); box.hidden=false;
+    if(!('IntersectionObserver' in window)){ P.countTo(n,total,0); return; }
+    const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); P.countTo(n,total,1800); } },{threshold:.4});
+    io.observe(box);
+  }).catch(()=>{});
+})();
+
 /* ---------- ライトボックス（写真が手前に出てきて拡大） ---------- */
 const lb=$('lb'), lbFig=$('lbFig'), lbImg=$('lbImg'), lbX=$('lbX');
 let srcBtn=null, anim=null;

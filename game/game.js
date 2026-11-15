@@ -185,7 +185,21 @@ function reset(){
   buildTrack(); position=0; playerX=0; speed=0; lap=1; elapsed=0; tokens=0; shake=0;
   updHud();
 }
+/* ---------- 累計プレイ数（js/plays.js） ---------- */
+const P=window.GRPlays, playsBox=$('plays'), playsN=$('playsN');
+let lastHit=0;
+function showPlays(total,dur){ if(!P||!playsBox) return; playsBox.hidden=false; P.countTo(playsN,total,dur); }
+if(P){ P.get().then(v=>showPlays(P.OFFSET+(v||0),1800)).catch(()=>{}); }
+function countPlay(){
+  if(!P) return;
+  const now=Date.now(); if(now-lastHit<2000) return; lastHit=now;   // 連打・ダブルタップは1回に
+  const cur=+(playsN.dataset.v||P.OFFSET);
+  showPlays(cur+1,600); playsN.classList.add('bump'); setTimeout(()=>playsN.classList.remove('bump'),300);
+  P.hit().then(v=>{ if(v!=null && P.OFFSET+v>+(playsN.dataset.v||0)) showPlays(P.OFFSET+v,800); }).catch(()=>{});
+}
 function start(){
+  if(state==='count'||state==='run') return;
+  countPlay();
   $('ovStart').classList.remove('on'); $('ovEnd').classList.remove('on');
   reset(); state='count'; countdown=3; flash('3',1);
   game.focus && game.focus({preventScroll:true});
