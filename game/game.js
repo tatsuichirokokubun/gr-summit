@@ -188,14 +188,15 @@ function reset(){
 /* ---------- 累計プレイ数（js/plays.js） ---------- */
 const P=window.GRPlays, playsBox=$('plays'), playsN=$('playsN');
 let lastHit=0;
-function showPlays(total,dur){ if(!P||!playsBox) return; playsBox.hidden=false; P.countTo(playsN,total,dur); }
-if(P){ P.get().then(v=>showPlays(P.OFFSET+(v||0),1800)).catch(()=>{}); }
+// カウントアップはせず、数字をそのまま表示（本人指示 2026-11-15）
+function showPlays(total){ if(!P||!playsBox) return; playsBox.hidden=false; total=Math.max(total,+(playsN.dataset.v||0)); playsN.dataset.v=total; playsN.textContent=Math.round(total).toLocaleString('ja-JP'); }
+if(P){ showPlays(P.OFFSET+(P.cached()||0)); P.get().then(v=>{ if(v!=null) showPlays(P.OFFSET+v); }).catch(()=>{}); }
 function countPlay(){
   if(!P) return;
   const now=Date.now(); if(now-lastHit<2000) return; lastHit=now;   // 連打・ダブルタップは1回に
   const cur=+(playsN.dataset.v||P.OFFSET);
-  showPlays(cur+1,600); playsN.classList.add('bump'); setTimeout(()=>playsN.classList.remove('bump'),300);
-  P.hit().then(v=>{ if(v!=null && P.OFFSET+v>+(playsN.dataset.v||0)) showPlays(P.OFFSET+v,800); }).catch(()=>{});
+  showPlays(cur+1); playsN.classList.add('bump'); setTimeout(()=>playsN.classList.remove('bump'),300);
+  P.hit().then(v=>{ if(v!=null && P.OFFSET+v>+(playsN.dataset.v||0)) showPlays(P.OFFSET+v); }).catch(()=>{});
 }
 function start(){
   if(state==='count'||state==='run') return;

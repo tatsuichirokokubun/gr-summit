@@ -41,6 +41,7 @@ function countTo(el, to, dur){
 window.GRPlays = {
   OFFSET: PLAY_OFFSET,
   get: () => call('get'),
+  cached: readCache,
   hit: () => call('hit'),
   countTo
 };
