@@ -73,9 +73,17 @@ function render(){
   }
   cue.style.opacity=(p<0.05||p>=0.98)?.9:0;
 }
+/* ---------- ヘッダー下のスクロール進捗バー ---------- */
+const hdr=document.querySelector('.hdr');
+function updateProgress(){
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  const p=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;
+  hdr.style.setProperty('--sp',p.toFixed(4));
+}
 let ticking=false;
-window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{render();renderScene();ticking=false});ticking=true}},{passive:true});
-window.addEventListener('resize',()=>{render();layoutFly();renderScene();});
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{render();renderScene();updateProgress();ticking=false});ticking=true}},{passive:true});
+window.addEventListener('resize',()=>{render();layoutFly();renderScene();updateProgress();});
+window.addEventListener('load',updateProgress);
 
 /* ---------- 初回自動スクロール ---------- */
 if('scrollRestoration' in history) history.scrollRestoration='manual';
@@ -208,7 +216,7 @@ function renderScene(){
   if(p>=.82&&!finale) playFinale();
   else if(p<.78&&finale) resetFinale();
 }
-layoutFly(); renderScene();
+layoutFly(); renderScene(); updateProgress();
 
 /* ---------- 全写真グリッド（もっと見る） ---------- */
 (function(){

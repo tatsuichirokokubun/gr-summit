@@ -29,7 +29,7 @@ button{font-family:inherit}
 
 /* ---------- HEADER ---------- */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);padding-top:env(safe-area-inset-top,0px)}
-.hdr::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,var(--red) 0 22%,transparent 22%)}
+.hdr::after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--red);transform-origin:left;transform:scaleX(var(--sp,0));transition:transform .12s linear;will-change:transform}
 .hdr-in{max-width:var(--design-max);margin:0 auto;height:var(--hh);padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:16px;text-decoration:none;min-width:0;line-height:1.2}
 .brand .logo{height:44px;width:auto;flex-shrink:0}
