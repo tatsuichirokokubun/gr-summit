@@ -320,7 +320,9 @@ footer b{color:var(--white);display:block;margin-bottom:4px;font-weight:700}
 .lp-count b{font-weight:800;font-size:clamp(72px,11vw,150px);color:var(--red);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .lp-count span{font-weight:800;font-size:clamp(28px,3.4vw,46px)}
 .lp-count em{font-style:normal;font-weight:800;font-size:clamp(28px,3.4vw,46px);background:var(--red);color:#fff;padding:4px 12px;transform:skewX(-8deg);display:inline-block}
-.lp-date{font-size:13px;color:#666;margin-top:10px}
+.lp-now{font-weight:800;font-size:clamp(18px,2vw,26px);margin-top:10px}
+.lp-now b{color:var(--red);font-size:1.4em;font-variant-numeric:tabular-nums}
+.lp-date{font-size:13px;color:#666;margin-top:6px}
 .lp-cta p{font-weight:800;font-size:clamp(20px,2.2vw,28px);line-height:1.45;margin-bottom:16px}
 .lp-cta .btn{min-width:min(100%,420px)}
 .sp-br{display:none}

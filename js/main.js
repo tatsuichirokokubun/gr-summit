@@ -238,15 +238,18 @@ layoutFly(); renderScene(); updateProgress();
 
 /* ---------- 公式LINE登録者数（data/stats.json。取れないときは下の値） ---------- */
 (function(){
-  const FALLBACK={line_friends:1004, updated:'2026-11-15'};
-  const nums=[...document.querySelectorAll('[data-line-count]')], dates=[...document.querySelectorAll('[data-line-updated]')];
+  const FALLBACK={line_friends:1043, updated:'2026-11-15'};
+  const nums=[...document.querySelectorAll('[data-line-count]')], dates=[...document.querySelectorAll('[data-line-updated]')], mils=[...document.querySelectorAll('[data-line-milestone]')];
   if(!nums.length) return;
   const fmt=n=>Math.round(n).toLocaleString('ja-JP');
   const fmtDate=d=>{ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||''); return m?`${+m[1]}年${+m[2]}月${+m[3]}日`:''; };
+  /* 「◯人突破」の切りのいい数：1,000以上は1,000単位、未満は100単位 */
+  const milestone=n=>n>=1000?Math.floor(n/1000)*1000:Math.max(100,Math.floor(n/100)*100);
   function apply(st){
     const to=(st&&isFinite(+st.line_friends)&&+st.line_friends>0)?+st.line_friends:FALLBACK.line_friends;
     const dt=fmtDate(st&&st.updated)||fmtDate(FALLBACK.updated);
     dates.forEach(el=>el.textContent=dt);
+    mils.forEach(el=>el.textContent=fmt(milestone(to)));
     nums.forEach(el=>{
       el.textContent=fmt(to);
       if(REDUCE||!('IntersectionObserver' in window)) return;
