@@ -527,3 +527,10 @@ body{line-break:strict;word-break:auto-phrase}
 .band-ph.on{opacity:1}
 .game-bnr{border-bottom:0}
 @media (prefers-reduced-motion:reduce){.band-ph{transition:none}}
+
+/* ---------- 取材・ボランティアカメラマン（2026-11-16 追加） ---------- */
+.flow-sub{grid-template-columns:repeat(2,1fr);margin-top:24px}
+.flow-card.press,.flow-card.camera{border-top-color:var(--mute)}
+.flow-note{font-size:12px;line-height:1.7;color:var(--mute)}
+.flow-mail{font-size:15px;font-weight:800;letter-spacing:.02em;word-break:break-all}
+@media (max-width:1024px){.flow-sub{grid-template-columns:1fr}}
