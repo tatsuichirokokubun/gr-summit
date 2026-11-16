@@ -112,11 +112,13 @@ function autoScroll(){
 }
 ['wheel','touchstart','keydown','mousedown'].forEach(ev=>window.addEventListener(ev,stopAuto,{passive:true}));
 cue.addEventListener('click',()=>{stopAuto();document.querySelector('.open').scrollIntoView({behavior:REDUCE?'auto':'smooth'});});
-window.addEventListener('load',()=>{
+function startIntro(){
   if(location.hash && location.hash!=='#top') return; // アンカー直リンク時は自動スクロールしない
   window.scrollTo(0,0); render();
-  setTimeout(autoScroll,500);
-});
+  setTimeout(autoScroll,window.GR_LOADER?250:500);
+}
+// ローディングがあれば「KVが表示できた時点」で開始（全画像の読み込み完了＝loadを待たない）
+if(window.GR_LOADER) window.GR_LOADER.then(startIntro); else window.addEventListener('load',startIntro);
 render();
 preloadMV();
 
