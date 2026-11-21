@@ -286,7 +286,8 @@ layoutFly(); renderScene(); updateProgress();
   const P=window.GRPlays, box=$('lpPlays'), n=$('lpPlaysN');
   if(!P||!box||!n) return;
   P.get().then(v=>{
-    const total=P.OFFSET+(v||0); box.hidden=false;
+    if(v==null||v<P.MIN) return;   // 実数が100に届くまでは出さない
+    const total=P.OFFSET+v; box.hidden=false;
     if(!('IntersectionObserver' in window)){ P.countTo(n,total,0); return; }
     const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); P.countTo(n,total,1800); } },{threshold:.4});
     io.observe(box);

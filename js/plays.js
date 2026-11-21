@@ -1,7 +1,8 @@
 /* GR SUMMIT DASH 累計プレイ数（LPとゲームページで共通） */
 (function(){
 'use strict';
-const PLAY_OFFSET = 36;   // 表示に上乗せする数（変更はここだけ。LP・ゲームの両方に反映）
+const PLAY_OFFSET = 36;
+const MIN_SHOW = 100;   // 実際のプレイ数がこの数に届くまでは表示しない（本人指示 2026-11-21）   // 表示に上乗せする数（変更はここだけ。LP・ゲームの両方に反映）
 const API = 'https://abacus.jasoncameron.dev', NS = 'gr-summit-lw', KEY = 'plays';
 const TIMEOUT = 10000;      // 10秒で打ち切り（無料サービスが遅いことがあるため。失敗しても画面は壊さない）
 const CACHE = 'grPlaysLast'; // 前回取れた実数（この端末だけ）。取れないときの表示に使う
@@ -40,6 +41,7 @@ function countTo(el, to, dur){
 }
 window.GRPlays = {
   OFFSET: PLAY_OFFSET,
+  MIN: MIN_SHOW,
   get: () => call('get'),
   cached: readCache,
   hit: () => call('hit'),
