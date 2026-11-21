@@ -254,6 +254,12 @@ footer b{color:var(--white);display:block;margin-bottom:4px;font-weight:700}
   .brand-sub{display:none}
 }
 @media (min-width:1181px){.hdr-cta .lbl-short{display:none}}
+@media (max-width:560px){
+  .hdr-cta{gap:4px}
+  .hdr-cta .btn{padding:8px 7px;font-size:11px}
+  .hdr-cta a.btn::after{display:none}
+  .hdr-in .brand .logo{height:28px}
+}
 @media (max-width:1024px){
   .flow{grid-template-columns:1fr}
   .cars{grid-template-columns:1fr 1fr}
