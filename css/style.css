@@ -540,6 +540,8 @@ body{line-break:strict;word-break:auto-phrase}
 .song::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-12deg,transparent 0 46px,rgba(235,10,30,.10) 46px 48px);pointer-events:none}
 .song-in{position:relative;display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:56px;align-items:center}
 .song-jk{width:100%;height:auto;aspect-ratio:1/1;box-shadow:0 20px 50px rgba(0,0,0,.6);border:2px solid #222}
+.song .song-ttl{letter-spacing:-.05em;word-spacing:-.14em}
+.song-g{color:var(--red)}
 .song-artist{font-weight:800;font-size:clamp(16px,1.6vw,20px);letter-spacing:.06em;color:var(--red);margin:-4px 0 16px}
 .song-txt p{max-width:36em}
 .song-en{color:#a1a1aa;font-size:14px;margin-top:6px}
