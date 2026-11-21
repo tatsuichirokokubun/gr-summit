@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=LINE+Seed+JP:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261116b">
+<link rel="stylesheet" href="css/style.css?v=20261121a">
 <link rel="stylesheet" href="css/loader.css?v=20261116a">
 <script type="application/ld+json">
 {
@@ -151,7 +151,7 @@
    },
    "primaryImageOfPage": "https://gr-summit.legendaryworks.co.jp/img/ogp.jpg",
    "datePublished": "2026-11-15",
-   "dateModified": "2026-11-20"
+   "dateModified": "2026-11-21"
   }
  ]
 }
@@ -587,6 +587,26 @@
     </div>
   </section>
 
+  <!-- theme song -->
+  <section class="song" id="song" aria-labelledby="song-ttl">
+    <div class="wrap song-in">
+      <img class="song-jk" src="img/song-jacket.webp" width="800" height="800" alt="GO TO GR!! / GR QUEENs ft. DJ DONGURI ジャケット" loading="lazy" decoding="async">
+      <div class="song-txt">
+        <p class="h2-en">THEME SONG</p>
+        <h2 class="h2" id="song-ttl">GO TO GR!!</h2>
+        <p class="song-artist">GR QUEENs ft. DJ DONGURI</p>
+        <p>GR SUMMIT 2027のテーマソングが完成!富士へ向かうドライブのお供に､当日までの気分上げに｡試聴もダウンロードも無料です｡</p>
+        <p class="song-en" lang="en">The official GR SUMMIT 2027 theme song. Free to play and download.</p>
+        <audio class="song-player" controls preload="none" src="assets/audio/GO_TO_GR_GR-SUMMIT-2027.mp3">お使いのブラウザは音声の再生に対応していません｡</audio>
+        <div class="song-act">
+          <a class="btn btn-red btn-lg" id="songDl" href="assets/audio/GO_TO_GR_GR-SUMMIT-2027.mp3" download="GO_TO_GR_GR-SUMMIT-2027.mp3">MP3をダウンロード（無料）</a>
+          <p class="song-cnt" id="songCnt" hidden><b id="songCntN">0</b> 回ダウンロード</p>
+        </div>
+        <p class="song-note">MP3 / 約7MB / 3:11｡個人で楽しむ範囲でご利用ください｡</p>
+      </div>
+    </div>
+  </section>
+
   <!-- game -->
   <section class="game-bnr" aria-labelledby="game-ttl">
     <div class="wrap game-in">
@@ -774,6 +794,7 @@
 
 <script src="js/plays.js?v=20261115j"></script>
 <script src="js/photos.js?v=20261115j"></script>
+<script src="js/song.js?v=20261121a"></script>
 <script src="js/main.js?v=20261116b"></script>
 </body>
 </html>

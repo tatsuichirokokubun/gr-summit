@@ -534,3 +534,23 @@ body{line-break:strict;word-break:auto-phrase}
 .flow-note{font-size:12px;line-height:1.7;color:var(--mute)}
 .flow-mail{font-size:15px;font-weight:800;letter-spacing:.02em;word-break:break-all}
 @media (max-width:1024px){.flow-sub{grid-template-columns:1fr}}
+
+/* theme song */
+.song{position:relative;overflow:hidden;padding:96px 0;background:#0b0b0b;color:#fff;border-top:4px solid var(--red)}
+.song::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-12deg,transparent 0 46px,rgba(235,10,30,.10) 46px 48px);pointer-events:none}
+.song-in{position:relative;display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:56px;align-items:center}
+.song-jk{width:100%;height:auto;aspect-ratio:1/1;box-shadow:0 20px 50px rgba(0,0,0,.6);border:2px solid #222}
+.song-artist{font-weight:800;font-size:clamp(16px,1.6vw,20px);letter-spacing:.06em;color:var(--red);margin:-4px 0 16px}
+.song-txt p{max-width:36em}
+.song-en{color:#a1a1aa;font-size:14px;margin-top:6px}
+.song-player{display:block;width:100%;max-width:460px;margin:24px 0 20px}
+.song-act{display:flex;align-items:center;flex-wrap:wrap;gap:16px 20px}
+.song-cnt{display:inline-flex;align-items:baseline;gap:6px;background:rgba(255,255,255,.06);border-left:4px solid var(--red);padding:8px 16px;font-weight:700;font-size:15px}
+.song-cnt b{font-weight:800;font-size:clamp(24px,2.6vw,32px);color:var(--red);font-variant-numeric:tabular-nums}
+.song-note{color:#a1a1aa;font-size:12px;margin-top:14px}
+@media (max-width:768px){
+  .song{padding:56px 0}
+  .song-in{grid-template-columns:1fr;gap:28px}
+  .song-jk{max-width:340px;margin:0 auto}
+  .song-act .btn{width:100%;justify-content:center;text-align:center}
+}
