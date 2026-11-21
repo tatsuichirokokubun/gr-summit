@@ -570,3 +570,6 @@ body{line-break:strict;word-break:auto-phrase}
   .song-jk{max-width:340px;margin:0 auto}
   .song-act .btn{width:100%;justify-content:center;text-align:center}
 }
+
+/* hidden属性の要素は必ず隠す（回数表示などが「0」のまま見えないように） */
+[hidden]{display:none!important}

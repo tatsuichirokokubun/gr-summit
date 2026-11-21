@@ -101,3 +101,6 @@ footer{border-top:1px solid var(--line);padding:28px 24px calc(28px + env(safe-a
 .ib{display:inline-block}
 .lbl2 .ib,.lbl-long .ib{white-space:nowrap}
 .lbl2{text-align:center}
+
+/* hidden属性の要素は必ず隠す（プレイ数が100に届くまで出さない） */
+[hidden]{display:none!important}
