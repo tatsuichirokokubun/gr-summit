@@ -544,8 +544,8 @@ body{line-break:strict;word-break:auto-phrase}
 .song-txt p{max-width:36em}
 .song-en{color:#a1a1aa;font-size:14px;margin-top:6px}
 .song-player{display:block;width:100%;max-width:460px;margin:24px 0 20px}
-.song-act{display:flex;align-items:center;flex-wrap:wrap;gap:16px 20px}
-.song-cnt{display:inline-flex;align-items:baseline;gap:6px;background:rgba(255,255,255,.06);border-left:4px solid var(--red);padding:8px 16px;font-weight:700;font-size:15px}
+.song-act{display:flex;align-items:stretch;flex-wrap:wrap;gap:16px 20px}
+.song-cnt{display:inline-flex;align-items:center;margin:0;gap:6px;background:rgba(255,255,255,.06);border-left:4px solid var(--red);padding:8px 16px;font-weight:700;font-size:15px}
 .song-cnt b{font-weight:800;font-size:clamp(24px,2.6vw,32px);color:var(--red);font-variant-numeric:tabular-nums}
 .song-note{color:#a1a1aa;font-size:12px;margin-top:14px}
 .song-lyr{margin-top:22px;max-width:460px;border-top:1px solid #2a2a2a}
