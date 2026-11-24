@@ -370,3 +370,27 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
   });
 })();
 })();
+
+/* ---------- よくある質問：カテゴリーのタブ切り替え（JSが無いときは全部表示） ---------- */
+(function(){
+  const list=document.querySelector('.faq-tabs'); if(!list) return;
+  const tabs=[...list.querySelectorAll('[role=tab]')];
+  const panels=tabs.map(t=>document.getElementById(t.getAttribute('aria-controls')));
+  function select(i,focus){
+    tabs.forEach((t,j)=>{ const on=i===j; t.setAttribute('aria-selected',on); t.tabIndex=on?0:-1; panels[j].hidden=!on; });
+    panels[i].querySelectorAll('.rv:not(.in)').forEach(el=>el.classList.add('in'));
+    if(focus) tabs[i].focus();
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(i,false));
+    t.addEventListener('keydown',e=>{
+      const n=tabs.length; let k=null;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown') k=(i+1)%n;
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp') k=(i-1+n)%n;
+      else if(e.key==='Home') k=0; else if(e.key==='End') k=n-1;
+      if(k!==null){ e.preventDefault(); select(k,true); }
+    });
+  });
+  list.hidden=false;
+  select(0,false);
+})();
